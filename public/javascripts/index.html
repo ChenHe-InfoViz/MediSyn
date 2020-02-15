@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="javascripts/css/main.css">
+  <link rel="stylesheet" type="text/css" href="javascripts/css/elements.css">
+<!--     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ -->
+ <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <!-- <script src="http://riccardoscalco.github.io/textures/textures.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+  <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+  <script src="https://d3js.org/d3-color.v0.5.min.js"></script>
+  <script src="https://d3js.org/d3-hsv.v0.0.min.js"></script>
+
+</head>
+
+<body>
+<div id = "canvas">
+  <div id = "list">
+
+  	  <div id = "datasetDiv">
+      	<text style = "font-weight: bold">
+      		Datasets
+      	</text><br/>
+      	<label><input type="checkbox" id="cgi" value="cgi" checked = "true">Cancer Genome Interpreter (<b>CGI</b>)</label><br/>
+        <label><input type="checkbox" id="dtc" value="dtc">Drug Target Commons (<b>DTC</b>)</label>
+      </div>
+      <div id = "effectController">
+      	<text style = "font-weight: bold">
+      		Drug-mutation effects from CGI
+      	</text><br/>
+      	<label style = "color: #00ff00"><input type="checkbox" class = "effectCheck" id="responsiveCheck" value = "Responsive" checked = "true">Reponsive</label><br/>
+      	<label style = "color: #ff0000"><input type="checkbox" class = "effectCheck" id="resistantCheck" value = "Resistant" checked = "true">Resistant</label><br/>
+      	<label style = "color: #0000ff"><input type="checkbox" class = "effectCheck" id="noresponseCheck" value = "No Response" checked = "true">Not responsive</label><br/>
+      	<label style = "color: #ff00ff"><input type="checkbox" class = "effectCheck" id="toxicityCheck" value = "Increased Toxicity" checked = "true">Increased Toxicity</label>
+
+      </div>
+
+      <svg id = "controllerSvg"></svg>
+      <div id = "sortControl"></div>
+      <div class="configHeader" id = "muTitle">Mutations</div>
+      <div id = "searchList" >
+        <table cellpadding="0" cellspacing="0" border="0" height = "36px">
+          <tr>
+            <td rowspan="2"><input id="searchInput" type="search" style="width:100%" placeholder="search... "/></td>
+            <td><input id="upButton" type="button" value=" /\ " style="margin:0;padding:0;width:22px;height:28px;" ></td>
+            <td rowspan="2"><label id="searchResult"></label></td>
+          </tr>
+          <tr>
+            <td><input id="downButton" type=button value=" \/ " style="margin:0;padding:0;width:22px;height:28px;" ></td>
+          </tr>
+        </table>
+    </div>
+      <div id = "checkBoxes" class="ui-column">
+      </div>
+
+  </div>
+  <div id = "main">
+    
+
+    <div id = "header">
+      <div id = "pageButton"> 
+        <button id = "firstPage"> |<< </button> 
+        <button id = "prePage"> << </button> 
+        <button id = "nextPage"> >> </button> 
+        <button id = "lastPage"> >>| </button> 
+      </div>
+      <div style="height:20px">
+        <!-- <a href="#" class="expand"> -->
+        <i class="icon-expand expand"></i> 
+        <!-- </a> -->
+        <!-- <a href="#" class="collapse"> -->
+        <i class="icon-collapse collapse"></i> <label class = "toggleText"> Tumor types</label>
+        <!-- </a> -->
+        </div>
+        <div id = "tumorDiv">
+        <svg id = "tumorSvg">
+        </svg>
+        </div>
+      <svg id = "headerSvg"></svg>
+      
+    </div>
+    <div id = "body">
+      
+      <div class = "tooltip" style = "opacity:1; background-color: white; visibility:hidden">
+        <text>Source:</text><br>
+      </div>
+      <svg id = "bodySvg">
+      	<!--  <defs> 
+    <pattern id="circles-1" patternUnits="userSpaceOnUse" width="10" height="10"> 
+      <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPScjZmZmJyAvPgogIDxjaXJjbGUgY3g9IjEiIGN5PSIxIiByPSIxIiBmaWxsPSIjMDAwIi8+Cjwvc3ZnPg==" 
+        x="0" y="0" width="10" height="10">
+      </image> 
+    </pattern> 
+  </defs>  -->
+      </svg>
+    </div>
+    
+    <!-- <div id = "detail">
+      <div class="configHeader">Source preview</div>
+      <div id = "iframeFader" style="display: none"> 
+      	<img src="javascripts/31.gif">
+      </div>
+      <div class="preview">
+      	<iframe id = "previewFrame" src="" height = "">
+      		
+      	</iframe>
+      </div>
+      <!-- <svg id = "detailSvg"></svg> -->
+    <!-- </div> -->
+  </div>
+  <span id="moveHandle" class = "handle"></span>
+  <div id = "iframeFader" style="display: none; background-color: white"> 
+        <img src="javascripts/31.gif">
+    </div>
+  <div id = "right">
+          <text></text><br><br>
+
+    </div>
+</div>
+<script src="javascripts/wrap.js"></script>
+<script src="javascripts/highlight.js"></script>
+
+<!-- <script src="javascripts/textures.min.js"></script> -->
+<!-- <script src="javascripts/textureGenerator.js"></script> -->
+
+<script src="javascripts/globalVariable.js"></script>
+<!-- <script src="javascripts/brushScale.js"></script> -->
+<script src="javascripts/svgBody.js"></script>
+<script src="javascripts/svgHeader.js"></script>
+<!-- <script src="javascripts/evidenceTest.js"></script> -->
+<script src="javascripts/ui.js"></script>
+<!-- <script src="javascripts/table.js"></script> -->
+<script src="javascripts/dataParser.js"></script>
+</body>

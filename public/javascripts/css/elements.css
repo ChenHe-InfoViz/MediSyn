@@ -1,0 +1,386 @@
+/*a{
+  text-decoration: underline;
+  cursor: pointer;
+}*/
+
+#background path {
+  fill: none;
+  /*stroke: cateColor(1);*/
+  stroke-width: 2;
+  shape-rendering: geometricPrecision;
+  opacity: .5;
+}
+
+#removedGroup path{
+  fill: none;
+  stroke-width: 2;
+  shape-rendering: geometricPrecision;
+}
+
+.paraG {
+  width: 100%
+}
+
+.configHeader{
+  font-weight: 700;
+  margin-bottom: 5px;
+  background-color: #eee;
+  font-size: 16pt;
+  padding-left: 5px;
+}
+
+#rows {
+  height: 100%;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+li em{background:#ff6;font-style:normal}
+
+.oneRow{
+  /*width: 100%*/
+}
+
+/*.drugLabel{
+  width: 50
+  font-size: 14pt
+}*/
+
+.stackGroup{
+  width: 80%
+}
+
+.foreground path {
+  fill: none;
+  /*stroke: darkgreen;*/
+  stroke-width: 2;
+}
+
+/*.foreground:hover{
+  opacity: 1;
+}*/
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line{
+  display: none;
+}
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: geometricPrecision;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  /*cursor: move;*/
+}
+
+.detailTable{
+  text-align: left;
+  table-layout: auto;
+  /*width: 100%;*/
+  max-width: 80%
+}
+
+.detailTable td{
+  white-space: nowrap;
+  border-right: 1px solid;
+}
+
+#moveHandle{
+  position:relative;
+  right:3px;
+  background-color:#ddd;
+  float:left;
+  /*cursor:ew-resize;*/
+  border-left:1px solid #999;
+  border-right:1px solid #999;
+  width:3px;
+  height:50px}
+
+
+.detailTable td:last-child th:last-child{
+  width: 100%;
+}
+
+.weightTable{
+  border-collapse: collapse;
+  padding: 6px;
+  /*font: 10px sans-serif;*/
+  width: 100%;
+  float: left;
+}
+
+#checkBoxes{
+  overflow-y: scroll;
+}
+
+.tooltip {   
+  position: absolute;           
+  text-align: left;           
+  /*width: 80px;                  
+  height: 50px;   */              
+  padding: 2px;              
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: auto;         
+}
+
+.weightTable th {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 6px;
+  min-width: 43px;
+}
+
+.weightTable thead td {
+  cursor: s-resize;
+}
+
+.weightTable tbody tr:first-child td {
+  padding-top: 2px;
+}
+
+.weightTable tbody td {
+  display: table-cell;
+  width: 20%;
+  padding: 0;
+  border-left: solid 1px #000;
+}
+
+.weightTable tbody td svg{
+  width: 99%;
+  /*display: inline;*/
+  /*flex-direction: column;*/
+}
+
+.weightTable tbody rect {
+  fill: #4799eb;
+}
+
+.weightTable tbody tr:hover rect {
+  fill: steelblue;
+}
+
+/*.well {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      width: 500px;
+    }*/
+    /*table {
+      font-size: 10px;
+      line-height: 10px;
+    }
+    td, th {
+      width: 33.3%;
+    }
+    label {
+      margin-bottom: 10px;
+    }*/
+
+#paraSvg{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.tick line{
+  display: none;
+}
+    /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+.compTable { 
+    width: 50%; 
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    padding: 6px;
+  }
+
+.compTable thead{
+  display: block;
+  text-align: left;
+}
+
+.compTable tbody{
+  display: block;
+  overflow-y: auto;
+}
+
+  /* Zebra striping */
+.compTable tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+
+.compTable td:nth-child(n), .compTable th:nth-child(n){
+  width: 12%;
+}
+
+.compTable td:nth-child(n+4), .compTable th:nth-child(n+4){
+  width: 6%;
+}
+
+.compTable td:nth-child(3), .compTable th:nth-child(3){
+  width: 45%;
+}
+
+.compTable th { 
+    /*background: #333; */
+    color: white; 
+    font-weight: bold; 
+    cursor: s-resize;
+    background-repeat: no-repeat;
+    background-position: 3% center;
+  }
+.compTable td, .compTable th { 
+    padding: 3px; 
+    /*border: 1px solid #ccc; */
+  }
+  
+.compTable th.des:after {
+      content: "\21E9";
+    }
+    
+.compTable th.aes:after {
+      content: "\21E7";
+    }
+
+.removedTable { 
+    width: 100%; 
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    /*padding: 6px;*/
+  }
+
+.removedTable thead{
+  display: block;
+}
+
+.removedTable tbody{
+  display: block;
+  overflow-y: auto;
+}
+
+  /* Zebra striping */
+.removedTable tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+
+.removedTable td:nth-child(n), th:nth-child(n){
+  width: 15%;
+}
+
+.removedTable td:nth-child(2), th:nth-child(2){
+  width: 70%;
+}
+
+/*.removeTable td a{
+  width: 100%;
+}*/
+
+.removedTable th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+    cursor: s-resize;
+    background-repeat: no-repeat;
+    background-position: 3% center;
+  }
+.removedTable td, .removedTable th { 
+    padding: 3px; 
+    /*border: 1px solid #ccc; */
+    text-align: left; 
+  }
+  
+.removedTable th.des:after {
+      content: "\21E9";
+    }
+    
+.removedTable th.aes:after {
+      content: "\21E7";
+    }
+  
+  /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */
+ /* @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+    /* Force table to not be like tables anymore */
+    /*table, thead, tbody, th, td, tr { 
+      display: block; 
+    }*/
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    /*thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    */
+    /*td { */
+      /* Behave  like a "row" */
+      /*border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 50%; 
+    }
+    
+    td:before { */
+      /* Now like a table header */
+      /*position: absolute;
+       Top/left values mimic padding 
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+    }*/
+    
+    /*
+    Label the data
+    */
+    /*td:before {
+      content: attr(data-th) ": ";
+          font-weight: bold;
+          width: 6.5em;
+          display: inline-block;
+    }
+  }*/
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  /*@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  */
+  /* iPads (portrait and landscape) ----------- */
+  /*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }*/

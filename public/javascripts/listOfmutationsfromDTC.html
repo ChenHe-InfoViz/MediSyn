@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+	  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+	<p id = "content"></p>
+	<script>
+var mutationList = [];
+var string = ["EGFR inframe deletion (L747),inframe insertion (P753PS)", "EGFR (L861Q,G719A,G719S,G719C,G719D,L747S,S768I,L861P,L861Q,L861R)", "G6PD (V98M) + G6PD (N156D)"]
+var re = new RegExp(/\),|\+/);
+for(var i = 0; i < string.length; i++){
+  if (re.test(string[i])) {
+      console.log("Valid");
+  } else {
+      console.log("Invalid");
+  }
+}
+//var promises = [];
+var total = 1;
+var count = 0;
+
+function getMutationList(url){
+	var promise = $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                //contentType: 'text/xml',
+                success: function (response) {
+                    try {
+                       //console.log(response);
+
+                       var resJson = response;
+                       console.log(resJson.meta.next)
+
+                       if(resJson.meta.next != null){
+                       	  getMutationList("https://drugtargetcommons.fimm.fi" + resJson.meta.next);
+                       	  total++;
+                       }
+                       var bios = resJson.bioactivities
+                       for(var i = 0; i < bios.length; i++){
+                       	  if(bios[i].mutation_info != null && mutationList.indexOf( bios[i].mutation_info ) < 0 ){
+                       	  	mutationList.push(bios[i].mutation_info);
+                       	  }
+                       }
+                    }
+                    catch (e) {
+                        console.log("proceedings error");
+
+                    }
+                    count++;
+                    //userReuqestLoop();
+                },
+                error: function () {
+                    console.log("get page request failed.");
+                    count++;
+                    //paperRequestLoop();
+                },
+                //timeout: 10000
+            })//.complete(paperDefer.resolve);
+	//promises.push(promise);
+}
+
+// $(document).ajaxStop( function(){
+//   console.log(total + " " + count);
+//   $("#content").html(mutationList.join("<br>"))
+// })
+
+// $.when.apply($, promises).done( function(){
+// 	console.log(total + " " + count);
+// 	$("#content").html(mutationList)
+// }).fail(function(){
+
+// })
+</script>
+</body>
